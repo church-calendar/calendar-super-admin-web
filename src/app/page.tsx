@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function LoginPage() {
   return (
     <div
@@ -6,11 +8,15 @@ export default function LoginPage() {
     >
       <div className="bg-white shadow-lg rounded-3xl p-8 w-[400px] flex flex-col items-start">
         {/* Logo */}
-        <img
-          src="/bird.png"
-          alt="logo"
-          className="w-18 h-16 mb-4 ml-20"
-        />
+          <div className="mb-4 ml-20">
+          <Image
+            src="/bird.png"
+            alt="logo"
+            width={72}
+            height={64} 
+            priority
+          />
+        </div>
 
         {/* Нэвтрэх нэр */}
         <div className="w-full mb-4">
