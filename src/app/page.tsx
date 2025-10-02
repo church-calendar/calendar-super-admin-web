@@ -1,10 +1,16 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push("super-admin-screen");
+  };
 
   return (
     <div
@@ -49,18 +55,32 @@ export default function LoginPage() {
             >
               {showPassword ? (
                 // Eye-slash
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M3 3l18 18" />
                   <path d="M10.73 5.08A10.55 10.55 0 0 1 12 5c5.52 0 9.77 4.1 10.94 6.06a1.3 1.3 0 0 1 0 1.88c-.54.81-1.43 1.95-2.65 3.03M6.53 6.53C4.3 8.17 2.77 10.12 2.06 11.06a1.3 1.3 0 0 0 0 1.88C3.23 14.9 7.48 19 13 19c.68 0 1.35-.06 2-.18" />
                   <path d="M9.88 9.88A3 3 0 0 0 12 15a3 3 0 0 0 2.12-.88" />
                 </svg>
               ) : (
                 // Eye
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
                   <circle cx="12" cy="12" r="3" />
                 </svg>
@@ -78,7 +98,10 @@ export default function LoginPage() {
         </div>
 
         {/* Нэвтрэх button */}
-        <button className="w-full h-13 bg-gradient-to-r from-[#0077FF] to-[#00AFFF] text-white py-2 rounded-lg transition">
+        <button
+          onClick={handleLogin}
+          className="w-full h-13 bg-gradient-to-r from-[#0077FF] to-[#00AFFF] text-white py-2 rounded-lg transition"
+        >
           Нэвтрэх
         </button>
       </div>
