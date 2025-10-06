@@ -6,10 +6,14 @@ import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push("super-admin-screen");
+    if (isLoading) return;
+    setIsLoading(true);
+
+    setTimeout(() => router.push("super-admin-screen"), 600);
   };
 
   return (
@@ -90,20 +94,25 @@ export default function LoginPage() {
         </div>
 
         {/* Сануулах checkbox */}
-        <div className="flex items-center w-full mb-4">
-          <input id="remember" type="checkbox" className="mr-2" />
-          <label htmlFor="remember" className="text-gray-600">
-            Сануулах
-          </label>
-        </div>
-
-        {/* Нэвтрэх button */}
-        <button
-          onClick={handleLogin}
-          className="w-full h-13 bg-gradient-to-r from-[#0077FF] to-[#00AFFF] text-white py-2 rounded-lg transition"
-        >
-          Нэвтрэх
-        </button>
+        {/* Login action: button OR loader */}
+        {isLoading ? (
+          <div
+            className="w-full h-13 flex items-center justify-center rounded-lg bg-gradient-to-r from-[#0077FF] to-[#00AFFF]"
+            aria-busy="true"
+            aria-live="polite"
+          >
+            <span className="inline-block w-6 h-6 rounded-full border-2 border-gray-300 border-t-transparent animate-spin" />
+            <span className="ml-2 text-white">Түр хүлээнэ үү…</span>
+          </div>
+        ) : (
+          <button
+            onClick={handleLogin}
+            type="button"
+            className="w-full h-13 bg-gradient-to-r from-[#0077FF] to-[#00AFFF] text-white py-2 rounded-lg transition hover:opacity-95 active:scale-[.99]"
+          >
+            Нэвтрэх
+          </button>
+        )}
       </div>
     </div>
   );
