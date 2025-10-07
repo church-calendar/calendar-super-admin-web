@@ -5,13 +5,13 @@ type Props = {
 };
 export default function SearchAddBar({ query, setQuery, onAdd }: Props) {
   return (
-    <div className="flex items-center gap-3 p-4 border-b">
+    <div className="flex items-center gap-3 p-4 border-gray">
       <div className="relative flex-1">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Нэр, утас"
-          className="w-full h-[44px] rounded-lg border px-10 text-[15px] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          className="w-full h-[44px] rounded-lg border border-gray-300 px-10 text-[15px] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
         />
         <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <circle cx="11" cy="11" r="7" />

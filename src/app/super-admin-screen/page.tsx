@@ -33,7 +33,7 @@ export default function SuperAdminListPage() {
             <div className="max-w-5xl mx-auto">
               <h1 className="text-[32px] leading-9 font-[600] mb-6">Админ жагсаалт</h1>
 
-              <div className="rounded-2xl border border-slate-200 shadow-sm">
+              <div className="rounded-2xl border-slate-200 shadow-sm">
                 <SearchAddBar query={query} setQuery={(v)=>setQuery(v)} onAdd={() => alert("➕ Нэмэх")} />
                 <AdminTable rowsAll={allAdmins} query={query} />
               </div>
