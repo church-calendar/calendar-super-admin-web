@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChevronRight } from "lucide-react"; // 👈 install lucide-react if you haven’t
+import { ChevronRight } from "lucide-react";
 
 export default function Topbar() {
   return (
@@ -22,10 +22,13 @@ export default function Topbar() {
         <span>Чуулган</span>
       </div>
 
+      {/* user avatar */}
       <div className="h-8 w-8 rounded-full overflow-hidden ring-1 ring-slate-200">
-        <img
+        <Image
           src="/avatars/10.jpg"
           alt="user"
+          width={32}
+          height={32}
           className="h-full w-full object-cover"
         />
       </div>
