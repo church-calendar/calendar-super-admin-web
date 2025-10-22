@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { Pin, Mail, UserPlus } from "./Icons";
+import { Pin, UserPlus } from "./Icons";
 import type { Church } from "@/lib/fakeApi";
 
 export default function ChurchCard({
@@ -11,9 +13,10 @@ export default function ChurchCard({
 }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
+      {/* cover */}
       <div className="relative">
-        <Image
-          src={church.cover}
+        <img
+          src="https://blog.cph.org/hubfs/_blogs/CPH_blog/Serve/2023/church-exterior.jpg"
           alt={church.name}
           width={380}
           height={192}
@@ -26,41 +29,60 @@ export default function ChurchCard({
         )}
       </div>
 
+      {/* body */}
       <div className="p-4 space-y-3">
         <div className="text-[18px] font-semibold leading-6">{church.name}</div>
+
         <div className="flex items-center gap-2 text-slate-500 text-sm">
           <Pin className="h-4 w-4 text-slate-400" />
           {church.country}, {church.city}
         </div>
 
+        {/* admins */}
         {church.admins.length === 0 ? (
-          <button
-            onClick={() => onAddAdmin(church.id)}
-            className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm text-white w-full bg-gradient-to-r from-[#0077FF] to-[#00AFFF]"
-          >
-            <UserPlus className="h-4 w-4 text-white" /> Админ нэмэх
-          </button>
-        ) : (
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
-            <div className="flex items-center gap-3">
-              <Image
-                src={church.admins[0].avatar || "/avatars/10.jpg"}
-                alt="admin"
-                width={32}
-                height={32}
-                className="h-8 w-8 rounded-full object-cover"
-              />
-              <div>
-                <div className="text-[14px] font-medium">{church.admins[0].name}</div>
-                <div className="text-[12px] text-slate-500">{church.admins[0].role}</div>
-              </div>
+          <div className="rounded-xl border border-amber-200 bg-amber-50 p-3">
+            <div className="flex items-center justify-between">
+              <span className="text-[12px] font-medium text-amber-700">
+                Хүлээгдэж буй
+              </span>
             </div>
-            <div className="mt-3 flex items-center gap-2 text-[12px] text-slate-500">
-              <Mail className="h-4 w-4 text-slate-400" />
-              {church.admins[0].email}
+            <p className="mt-1 text-[13px] text-amber-800">
+              Энэ чуулганд админ хараахан нэмээгүй байна.
+            </p>
+          </div>
+        ) : (
+          <div className="rounded-xl border border-slate-100 bg-slate-50 p-2">
+            {/* horizontal scroll list */}
+            <div className="flex gap-2 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {church.admins.map((a) => (
+                <div
+                  key={a.id}
+                  className="shrink-0 flex items-center gap-3 rounded-xl border border-slate-100 bg-white px-3 py-2"
+                >
+                  <img
+                    src={a.avatar || "/avatars/10.jpg"}
+                    alt={a.name}
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 rounded-full object-cover"
+                  />
+                  <div>
+                    <div className="text-[14px] font-medium leading-5">{a.name}</div>
+                    <div className="text-[12px] text-slate-500 leading-4">{a.role}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
+
+        {/* always show Add Admin button */}
+        <button
+          onClick={() => onAddAdmin(church.id)}
+          className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm text-white w-full bg-gradient-to-r from-[#0077FF] to-[#00AFFF]"
+        >
+          <UserPlus className="h-4 w-4 text-white" /> Админ нэмэх
+        </button>
       </div>
     </div>
   );

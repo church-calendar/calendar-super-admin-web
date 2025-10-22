@@ -23,8 +23,11 @@ export default function LoginPage() {
     >
       <div className="bg-white shadow-lg rounded-3xl p-8 w-[400px] flex flex-col items-start">
         {/* Logo */}
-        <div className="mb-4 ml-20">
-          <Image src="/bird.png" alt="logo" width={72} height={64} priority />
+        <div className="flex ">
+          <div>
+            <Image src="/bird.png" alt="logo" width={69} height={64} priority />
+          </div>
+          <div className="text-black text-[20px] font-medium">Нэвтрэх</div>
         </div>
 
         {/* Нэвтрэх нэр */}

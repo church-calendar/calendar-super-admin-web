@@ -36,6 +36,25 @@ export default function Sidebar({ active, onSelect }: SidebarProps) {
             onClick={() => onSelect("church")}
           >
             <Image
+              src="/ad.png"
+              alt="church"
+              width={18}
+              height={24}
+              priority
+              className={active === "church" ? whiteFilter : blackFilter}
+            />
+            Админ
+          </button>
+
+          {/* Чуулган */}
+          <button
+            type="button"
+            className={`${baseItem} ${
+              active === "church" ? activeItem : inactiveItem
+            } w-full text-left`}
+            onClick={() => onSelect("church")}
+          >
+            <Image
               src="/chuulgan_icon.png"
               alt="church"
               width={18}
