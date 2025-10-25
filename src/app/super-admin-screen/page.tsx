@@ -7,7 +7,7 @@ import LogoutFab from "../super-admin-screen/components/LogoutFab";
 import AdminUI from "./components/AdminUI";
 
 export default function SuperAdminListPage() {
-  // ✅ now includes 'admin'
+  
   const [active, setActive] = useState<"admin" | "church" | "settings">("admin");
 
   return (

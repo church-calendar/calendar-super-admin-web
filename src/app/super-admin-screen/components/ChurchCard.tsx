@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Pin, UserPlus } from "./Icons";
 import type { Church } from "@/lib/fakeApi";
 
@@ -67,8 +66,12 @@ export default function ChurchCard({
                     className="h-8 w-8 rounded-full object-cover"
                   />
                   <div>
-                    <div className="text-[14px] font-medium leading-5">{a.name}</div>
-                    <div className="text-[12px] text-slate-500 leading-4">{a.role}</div>
+                    <div className="text-[14px] font-medium leading-5">
+                      {a.name}
+                    </div>
+                    <div className="text-[12px] text-slate-500 leading-4">
+                      {a.role}
+                    </div>
                   </div>
                 </div>
               ))}
