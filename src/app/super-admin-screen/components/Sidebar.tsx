@@ -1,18 +1,19 @@
+// components/Sidebar.tsx
 "use client";
 import Image from "next/image";
 
 type SidebarProps = {
-  active: "church" | "settings";
-  onSelect: (key: "church" | "settings") => void;
+  active: "admin" | "church" | "settings";
+  onSelect: (key: "admin" | "church" | "settings") => void;
 };
 
 export default function Sidebar({ active, onSelect }: SidebarProps) {
-  const baseItem = "flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-all";
+  const baseItem =
+    "flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-all";
   const activeItem =
     "text-white font-normal bg-gradient-to-r from-[#0077FF] to-[#00AFFF]";
   const inactiveItem = "text-slate-600 hover:bg-slate-50";
 
-  // CSS filter for white vs black icon
   const whiteFilter = "brightness-0 invert"; // makes icon white
   const blackFilter = "brightness-0"; // makes icon black
 
@@ -27,21 +28,21 @@ export default function Sidebar({ active, onSelect }: SidebarProps) {
         </div>
 
         <nav className="mt-2 space-y-1">
-          {/* Чуулган */}
+          {/* Админ */}
           <button
             type="button"
             className={`${baseItem} ${
-              active === "church" ? activeItem : inactiveItem
+              active === "admin" ? activeItem : inactiveItem
             } w-full text-left`}
-            onClick={() => onSelect("church")}
+            onClick={() => onSelect("admin")}
           >
             <Image
-              src="/ad.png"
-              alt="church"
+              src="/admin_icon.png"
+              alt="admin"
               width={18}
               height={24}
               priority
-              className={active === "church" ? whiteFilter : blackFilter}
+              className={active === "admin" ? whiteFilter : blackFilter}
             />
             Админ
           </button>

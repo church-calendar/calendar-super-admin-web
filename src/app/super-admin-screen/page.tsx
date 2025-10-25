@@ -4,9 +4,11 @@ import Sidebar from "../super-admin-screen/components/Sidebar";
 import Topbar from "../super-admin-screen/components/Topbar";
 import ChurchesUI from "../super-admin-screen/components/ChurchesUI";
 import LogoutFab from "../super-admin-screen/components/LogoutFab";
+import AdminUI from "./components/AdminUI";
 
 export default function SuperAdminListPage() {
-  const [active, setActive] = useState<"church" | "settings">("church");
+  // ✅ now includes 'admin'
+  const [active, setActive] = useState<"admin" | "church" | "settings">("admin");
 
   return (
     <div className="h-screen flex bg-white text-slate-800">
@@ -18,10 +20,11 @@ export default function SuperAdminListPage() {
       {/* Main content area (scrollable) */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         <Topbar />
+
         <main className="flex-1 overflow-y-auto px-6 py-8">
-          {active === "church" ? (
-            <ChurchesUI />
-          ) : (
+          {active === "admin" && <AdminUI />} {/* ✅ Admin section */}
+          {active === "church" && <ChurchesUI />}
+          {active === "settings" && (
             <>
               <h1 className="text-[32px] leading-9 font-[600] mb-6">Тохиргоо</h1>
               <div className="rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
