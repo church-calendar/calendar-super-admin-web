@@ -7,6 +7,7 @@ import {
   ChevronRight,
   ChevronDown,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function AdminUI() {
   const [search, setSearch] = useState("");
@@ -155,7 +156,7 @@ export default function AdminUI() {
                   >
                     <td className="px-6">
                       <div className="flex items-center gap-3">
-                        <img
+                        <Image
                           src={admin.avatar}
                           alt={admin.name}
                           className="w-8 h-8 rounded-full"

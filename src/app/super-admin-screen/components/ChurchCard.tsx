@@ -2,6 +2,7 @@
 
 import { Pin, UserPlus } from "./Icons";
 import type { Church } from "@/lib/fakeApi";
+import Image from "next/image";
 
 export default function ChurchCard({
   church,
@@ -14,7 +15,7 @@ export default function ChurchCard({
     <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
       {/* cover */}
       <div className="relative">
-        <img
+        <Image
           src="https://blog.cph.org/hubfs/_blogs/CPH_blog/Serve/2023/church-exterior.jpg"
           alt={church.name}
           width={380}
@@ -58,7 +59,7 @@ export default function ChurchCard({
                   key={a.id}
                   className="shrink-0 flex items-center gap-3 rounded-xl border border-slate-100 bg-white px-3 py-2"
                 >
-                  <img
+                  <Image
                     src={a.avatar || "/avatars/10.jpg"}
                     alt={a.name}
                     width={32}

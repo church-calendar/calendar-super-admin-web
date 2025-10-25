@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { Pencil, Trash2 } from "lucide-react";
 
 type Admin = {
@@ -57,11 +58,14 @@ export default function AdminList() {
             {filtered.map((a) => (
               <tr key={a.id} className="border-t hover:bg-gray-50">
                 <td className="px-4 py-2 flex items-center gap-2">
-                  <img
-                    src={a.avatar || "/default-avatar.png"}
-                    alt={a.name}
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
+                  <div className="relative w-8 h-8 rounded-full overflow-hidden">
+                    <Image
+                      src={a.avatar || "/default-avatar.png"}
+                      alt={a.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   {a.name}
                 </td>
                 <td className="px-4 py-2">{a.phone}</td>
