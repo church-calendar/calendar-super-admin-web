@@ -85,7 +85,6 @@ export default function AdminUI() {
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Osonchimeg",
     },
   ];
-
   const filtered = admins.filter((a) =>
     [a.name, a.phone].some((v) =>
       v.toLowerCase().includes(search.toLowerCase())
